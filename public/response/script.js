@@ -26,7 +26,7 @@ fetch(`http://localhost:3001/question/${id}`)
 let responses = []
 const showResponse = data => {
   data.map(response => responses.unshift(response))
-  const main = document.querySelector("main")
+  const main = html.get("main")
   main.innerHTML = ""
   responses.map(({ author, body }) => {
     const element = document.createElement("div")
@@ -65,6 +65,8 @@ form.submit.addEventListener("click", e => {
     method: "POST",
     body: JSON.stringify(inputs),
   }).then(() => showResponse([inputs]))
+  html.get("#form input").value = ""
+  html.get("#form textarea").value = ""
 })
 
 /**

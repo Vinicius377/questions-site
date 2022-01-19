@@ -1,8 +1,14 @@
 //*showquestions
+const html = {
+  get(element) {
+    return document.querySelector(element)
+  },
+}
+
 let questions = []
 const showQuestions = data => {
   data.map(question => questions.unshift(question))
-  const main = document.querySelector("main")
+  const main = html.get("main")
   main.innerHTML = ""
   questions.map(({ author, body, id }) => {
     const element = document.createElement("div")
@@ -18,13 +24,13 @@ const showQuestions = data => {
   })
 }
 //*post new question
-const post = document.querySelector("#post")
+const post = html.get("#post")
 post.addEventListener("click", e => {
   e.preventDefault()
 
   const inputs = {
-    author: document.getElementById("author").value,
-    body: document.getElementById("body").value,
+    author: html.get("#author").value,
+    body: html.get("#body").value,
   }
 
   fetch("http://localhost:3001/question", {
@@ -38,6 +44,8 @@ post.addEventListener("click", e => {
     .then(() => {
       showQuestions([inputs])
     })
+  html.get("#author").value = ""
+  html.get("#body").value = ""
 })
 
 //*allquestions
