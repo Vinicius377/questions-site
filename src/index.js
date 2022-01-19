@@ -2,6 +2,7 @@ import express from "express"
 import "dotenv/config"
 import routersQuestion from "./routers/Question.routers.js"
 import routersResponse from "./routers/Response.routers.js"
+import "./models/Response.js"
 
 import cors from "cors"
 

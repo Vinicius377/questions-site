@@ -1,14 +1,14 @@
 import { Router } from "express"
-import { deleteQuestion } from "../controllers/Questions/deleteQuestion.js"
-import { getAllQuestion } from "../controllers/Questions/getAllQuestion.js"
+import { deleteResponse } from "../controllers/Response/deleteResponse.js"
+import { getAllResponse } from "../controllers/Response/getAllResponse.js"
+import { newResponse } from "../controllers/Response/newResponse.js"
 
-import { newQuestion } from "../controllers/Questions/newQuestion.js"
 const routers = Router()
 
-routers.post("/questions", newQuestion)
+routers.post("/response", newResponse)
 
-routers.get("/questions", getAllQuestion)
+routers.get("/response/:id", getAllResponse)
 
-routers.delete("/questions/:id", deleteQuestion)
+routers.delete("/response/:id", deleteResponse)
 
 export default routers

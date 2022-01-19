@@ -1,7 +1,6 @@
 //*showquestions
 let questions = []
 const showQuestions = data => {
-  console.log(data)
   data.map(question => questions.unshift(question))
   const main = document.querySelector("main")
   main.innerHTML = ""
@@ -11,7 +10,7 @@ const showQuestions = data => {
     element.innerHTML = `
     <div>
     <h1>${author}</h1>
-    <button onclick="window.location.href='../perguntas/index.html?id=${id}'">Responder</button>
+    <button onclick="window.location.href='../response/index.html?id=${id}'">Responder</button>
     </div>
     <p>${body}</p>
   `
@@ -21,11 +20,13 @@ const showQuestions = data => {
 //*post new question
 const post = document.querySelector("#post")
 post.addEventListener("click", e => {
+  e.preventDefault()
+
   const inputs = {
     author: document.getElementById("author").value,
     body: document.getElementById("body").value,
   }
-  e.preventDefault()
+
   fetch("http://localhost:3001/question", {
     method: "POST",
     headers: {

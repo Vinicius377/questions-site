@@ -10,12 +10,16 @@ const Response = connection.define("Response", {
     type: DataTypes.TEXT,
     allowNull: false,
   },
-  likesCount: {
-    type: DataTypes.NUMBER,
+  question_id: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+  },
+  count_like: {
+    type: DataTypes.INTEGER,
     defaultValue: 0,
   },
 })
 
-Response.sync({ force: true }).catch(e => console.log(e))
+Response.sync({ force: false }).catch(e => console.log(e))
 
 export default Response
